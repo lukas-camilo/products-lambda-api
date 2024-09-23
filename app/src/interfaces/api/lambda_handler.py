@@ -7,6 +7,7 @@ app = ApiGatewayResolver()
 
 @app.get("/products")
 def list_products():
+    logger.info("Testando")
     return []
 
 @logger.inject_lambda_context
