@@ -1,11 +1,11 @@
 data "archive_file" "python_file" {
   type        = "zip"
-  source_dir  = "./app/src/"
-  output_path = "./app/src/lambda_function.zip"
+  source_dir  = "../app/src/"
+  output_path = "./lambda_function.zip"
 }
 
 resource "aws_lambda_function" "lambda_run" {
-  filename         = "./app/src/lambda_function.zip"
+  filename         = "./lambda_function.zip"
   source_code_hash = data.archive_file.python_file.output_base64sha256
   function_name    = var.name
   role             = aws_iam_role.lambda_role.arn
