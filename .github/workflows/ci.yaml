@@ -1,11 +1,11 @@
-name: Provision S3
+name: Provision Resource
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  provision-s3:
+  provision-resource:
     runs-on: ubuntu-latest
 
     steps:
