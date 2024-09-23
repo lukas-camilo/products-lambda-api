@@ -10,10 +10,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: '14'
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -27,26 +23,11 @@ jobs:
         with:
           terraform_wrapper: false
 
-      - name: Terraform Init
-        id: init
+      - name: Terraform Apply
+        id:   apply
         run: |
           terraform init
-        working-directory: ./infra
-
-      - name: Terraform Validate
-        id: validate
-        run: |
           terraform validate
-        working-directory: ./infra
-      
-      - name: Terraform Plan
-        id: plan
-        run: |
           terraform plan 
-        working-directory: ./infra
-
-      - name: Terraform Apply
-        id: apply
-        run: |
           terraform apply -auto-approve
         working-directory: ./infra
